@@ -45,7 +45,7 @@ https://github.com/PaulStoffregen/MotionCal/issues/11#issuecomment-2412937251
 bool CALIBRATION = false;
 ```
 
-Once you have established your 15 (3+9+3) calibration coefficients (see https://github.com/PaulStoffregen/MotionCal), determine the device string of your sensor (provided in the initial serial debug output), and add your calibration coefficients following the example given in `gap_mag.ino`:
+Once you have established your 15 (3+9+3) calibration coefficients (see https://github.com/PaulStoffregen/MotionCal), determine the device string of your sensor (provided in the initial serial debug output), and add your calibration coefficients following the example given in `gps_mag.ino`:
 
 ```c
 if (strcmp(DeviceID, "38e4bfd6") == 0) {
