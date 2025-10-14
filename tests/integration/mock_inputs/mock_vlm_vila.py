@@ -3,7 +3,7 @@ import base64
 import logging
 import threading
 import time
-from queue import Queue
+from queue import Empty, Queue
 from typing import List, Optional
 
 import cv2
@@ -291,7 +291,7 @@ class MockVLM_Vila(VLMVila):
             message = self.message_buffer.get_nowait()
             logging.debug("MockVLM_Vila: Retrieved message from buffer")
             return message
-        except Exception:
+        except Empty:
             # Don't log this as it's expected when buffer is empty
             return None
 
