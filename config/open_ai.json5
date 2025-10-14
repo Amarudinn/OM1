@@ -47,7 +47,7 @@
     },
     {
       "name": "face",
-      "llm_label": "face",
+      "llm_label": "emotion",
       "implementation": "passthrough",
       "connector": "ros2"
     }
