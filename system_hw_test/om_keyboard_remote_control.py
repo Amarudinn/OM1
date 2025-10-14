@@ -19,6 +19,10 @@ from dataclasses import dataclass
 from om1_utils import ws
 from pynput import keyboard
 
+# Movement constants
+LINEAR_SPEED = 0.5
+ANGULAR_SPEED = 0.5
+
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
@@ -88,7 +92,7 @@ class RemoteMoveController:
     def on_press(self, key):
         try:
             k = key.char
-        except Exception:
+        except AttributeError:
             k = key.name
 
         self.key_pressed.add(k)
@@ -98,7 +102,7 @@ class RemoteMoveController:
 
         try:
             k = key.char
-        except Exception:
+        except AttributeError:
             k = key.name
 
         if k in self.key_pressed:
@@ -122,13 +126,13 @@ class RemoteMoveController:
         angular = 0.0
 
         if "w" in self.key_pressed:
-            linear = 0.5
+            linear = LINEAR_SPEED
         if "s" in self.key_pressed:
-            linear = -0.5
+            linear = -LINEAR_SPEED
         if "a" in self.key_pressed:
-            angular = 0.5
+            angular = ANGULAR_SPEED
         if "d" in self.key_pressed:
-            angular = -0.5
+            angular = -ANGULAR_SPEED
 
         self.linear = linear
         self.angular = angular

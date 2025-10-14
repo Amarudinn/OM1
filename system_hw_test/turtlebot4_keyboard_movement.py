@@ -23,6 +23,10 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
+# Movement constants
+LINEAR_SPEED = 0.5
+ANGULAR_SPEED = 0.5
+
 # Global variables
 exit_program = False
 current_linear = 0.0
@@ -76,7 +80,7 @@ def on_press(key, move_controller):
 
     try:
         k = key.char
-    except Exception:
+    except AttributeError:
         k = key.name
 
     key_pressed.add(k)
@@ -88,7 +92,7 @@ def on_release(key, move_controller):
 
     try:
         k = key.char
-    except Exception:
+    except AttributeError:
         k = key.name
 
     if k in key_pressed:
@@ -109,13 +113,13 @@ def update_movement(move_controller):
     new_angular = 0.0
 
     if "w" in key_pressed:
-        new_linear = 0.5
+        new_linear = LINEAR_SPEED
     if "s" in key_pressed:
-        new_linear = -0.5
+        new_linear = -LINEAR_SPEED
     if "a" in key_pressed:
-        new_angular = 0.5
+        new_angular = ANGULAR_SPEED
     if "d" in key_pressed:
-        new_angular = -0.5
+        new_angular = -ANGULAR_SPEED
 
     current_linear = new_linear
     current_angular = new_angular

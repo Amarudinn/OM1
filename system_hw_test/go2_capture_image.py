@@ -18,12 +18,12 @@ if __name__ == "__main__":
     code, data = client.GetImageSample()
 
     if code != 0:
-        print("get image sample error. code:", code)
+        print("Get image sample error. code:", code)
     else:
-        imageName = "./img.jpg"
-        print("ImageName:", imageName)
+        image_name = "./img.jpg"
+        print("Image name:", image_name)
 
-        with open(imageName, "+wb") as f:
+        with open(image_name, "+wb") as f:
             f.write(bytes(data))
 
     time.sleep(1)
